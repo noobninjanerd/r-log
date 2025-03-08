@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="./assets/css/reset.css"/>
+	<link rel="stylesheet" href="./assets/css/main.css"/>
+	<link rel="stylesheet" href="./assets/css/index.css"/>
+    <link rel="stylesheet" href="./assets/css/blog.css"/>
+
+    <!--MathJax for LaTeX rendering-->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Marked.js for Markdown conversion -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <header id="navbar" class="header-main"></header>
+
+    <main>
+        
+        <div class="wrapper-main">
+            <section class="blog-list">
+                <h1>Blog</h1>
+                <h2>2025</h2>
+                <ul>
+                    <li>
+                        <a href="./T1.B-vs-H.html">
+                            <div class="blog-id">
+                                <H3>B? H?</H3>
+                                <p>
+                                    Clearing the ambiguity between the vector fields for once and all
+                                </p>
+                            </div>
+                                
+                            <p class="blog-date">
+                                Posted on <time datetime="2025-03-06T00:11">March 6, 2025 at 00:11</time>
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+    </main>
+
+    <footer class="footer-main" id="footer"></footer>
+
+    <script>
+        fetch('./content/Basics-Of-Magnetic-Circuits.md')
+            .then(response => response.text())
+            .then(markdown => {
+                const htmlContent = marked.parse(markdown);
+                document.getElementById('markdown-body').innerHTML = htmlContent;
+                // Re-run MathJax to render any math in the new content
+                if (window.MathJax) {
+                MathJax.typeset();
+                }
+            })
+            .catch(error => console.error('Error loading Markdown:', error));
+
+        fetch('./includes/header.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar').innerHTML = html;
+            });
+
+        fetch('./includes/footer.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('footer').innerHTML = html;
+            });
+    </script>
+</body>
+
+</html>

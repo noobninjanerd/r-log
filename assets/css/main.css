@@ -1,0 +1,164 @@
+/* to-do
+1. set color-scheme, learn how-to
+2. transitions
+*/
+:root{
+	--cream-color: #FFFDF2;
+	--beige: #DDD0C8;
+	--beige-1: #fcf0e0;
+	--beige-2: #decab7;
+	--dark-grey: #323232;
+	--yellow-green: #baff39; 
+
+	--heliotrope: #EE72F8; 
+	--malachite: #31EC56;
+	--razzmatazz: #EF036C;
+}
+
+body{
+	background-color: var(--beige-1);
+	/* these three settings for keeping footer at bottom */
+	min-height: 100vh;
+	display: flex; 
+    flex-direction: column;
+}
+
+.wrapper-main{
+	width: 60%;
+	margin: 0 auto;
+}
+
+h1{
+	font-size: 26px;
+	line-height: 32px;
+	color: black;
+	font-family: "Onest";
+	font-weight: 600;
+	text-transform: uppercase;
+	
+	margin-top: 12px;
+}
+
+h2{
+	font-size: 22px;
+	line-height: 28px;
+	color: black;
+	font-family: "Onest";
+	font-weight: 400;
+	text-transform: none;
+	
+	margin-top: 12px;
+}
+
+h3{
+	font-size: 18px;
+	line-height: 28px;
+	color: black;
+	font-family: "Onest";
+	font-weight: 300;
+	text-transform: none;
+	
+	margin-top: 12px;
+}
+
+p{
+	font-size: 14px;
+	line-height: 20px;
+	color: black;
+	font-family: "Onest";
+	font-weight: 100;
+	margin-top: 8px;
+}
+
+a{
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 24px;
+	color: black;
+	font-family: "Onest";
+	font-weight: 100;
+}
+
+/* HEADER */
+
+.header-main{
+	position: fixed;
+	top: 0;
+	
+	width: 100%;
+	height: 75px;
+	background-color: var(--beige-2);
+	padding: 0px 22vw;
+	border-bottom: solid 1px var(--dark-grey);
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	z-index: 100;
+}
+
+.header-main-title {
+	width: 120px;
+	height: 75%;
+	background-color: whitesmoke;
+	margin: 0;
+	align-content: center;
+	text-align: center;
+	border:solid 1px #000;
+}
+
+.header-main-title a{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.75rem;
+}
+
+.header-main-nav {
+	width: fit-content;
+	height: 100%;
+	text-align: center;
+}
+
+.header-main-nav ul {
+	list-style: none; /* even though we have a reset stylesheet */
+	height: 100%;
+	align-content: center;
+}
+
+.header-main-nav ul li{
+	height: 35px;
+	width: 70px;
+	display: flex;
+	float: left; 
+	margin: 0 10px 0 10px;
+	
+	border:solid 1px #000;
+}	
+
+.header-main-nav ul li:hover{
+	background-color: VAR(--yellow-green);
+	border:solid 1px VAR(--yellow-green);
+}
+
+.header-main-nav ul li a{
+	font-family: Arial, Helvetica, sans-serif;
+	height: 100%;
+	width: 100%;
+	line-height: 35px;
+}
+
+/* FOOTER */
+.footer-main {	
+	width: 100%;
+	height: fit-content;
+	margin-top: auto; /* keeps footer at bottom */
+	padding: 60px 0 100px 0;
+	background-color: #c2a38f;
+
+}
+
+.footer-main-flex{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

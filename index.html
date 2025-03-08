@@ -3,49 +3,76 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>R-Log</title>
-	<link rel="stylesheet" href="./assets/css/styles.css" />
+	<title>r-log</title>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" href="../assets/css/reset.css"/>
+	<link rel="stylesheet" href="../assets/css/main.css"/>
+	<link rel="stylesheet" href="../assets/css/index.css"/>
 </head>
 
 <body>
-	<header>
-		<h1>R-Log</h1>
-		<nav>
+	<header class="header-main">
+		
+		<p class="header-main-title"><a href=index.html>r-log</a></p>
+		
+		<nav class="header-main-nav">
 			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="blog.html">Blog</a></li>
+				<li><a href=index.html>home</a></li>
+				<li><a href=blog.html>blog</a></li>
+				<li><a href=#>say hi</a></li>
 			</ul>
 		</nav>
-	</header>
 
-	<main id="content">
-		<section class="intro">
-			<h2>Hello world, my name is Aarav!</h2>
-			<article>
-				<h3>Welcome to my website,</h3>
-				<p> 
-				I just realised that I have a lot of interests and this is me making an effort into pursuing them!
-				I have done a bachelors in electrical engineering and currently work as a junior engineer in a bengaluru-based EV startup.
-				</p>
-				<p>
-				I want to write about my journey as I learn control theory and c-programming. I may also write about 
-				the animal rescue work that I am not able to stop myself from getting into. 
-				</p>
-			</article>
-		<section>
+	</header>	
+	
+	<main>
+		<div class="wrapper-main">
+			<section class="intro">
+				<h1>Hello world, my name is Aarav!</h1>
+				<article>
+					<h2>Welcome to my website,</h2>
+					<p> 
+					I just realised that I have a lot of interests and this is me making an effort into pursuing them!
+					I have done a bachelors in electrical engineering and currently work as a junior engineer in a bengaluru-based EV startup.
+					</p>
+					<p>
+					I want to write about my journey as I learn control theory and c-programming. I may also write about 
+					the animal rescue work that I am not able to stop myself from getting into. 
+					</p>
+				</article>
+			</section>
+
+			<section class="recent-posts">
+				<h3>recent posts</h3>
+				<ul>
+					<li><a href="#">Post-1</a></li>
+					<li><a href="#">Post-2</a></li>
+					<li><a href="#">Post-3</a></li>
+					<li><a href="#">Post-4</a></li>
+					<li><a href="#">Post-5</a></li>
+				</ul>
+
+			</section>	
+		</div>
 	</main>
 
-	<footer>
-		<div class="contact-info">
-			<p class="feet">Contact: <a href="mailto:aarav.vaid@outlook.com">aarav.vaid@outlook.com</a></p>
-			<ul class="social-links">
-				<li><a href="https://www.linkedin.com/in/aaravvaid" target="_blank">LinkedIn</a></li>
-				<li>|</li>
-				<li><a href="https://www.github.com/noobninjanerd" target="_blank">GitHub</a></li>
-			</ul>	
+	<footer class="footer-main">
+		<div class="wrapper-main footer-main-flex">
+			<ul>
+				<li><p>SITEMAP</p></li>
+				<li><a href="index.html">home</a></li>
+				<li><a href="blog.html">blog</a></li>
+				<li><a href="#">say hi</a></li>
+			</ul>
+
+			<img src="./assets/pngs/Written-By-Human-Not-By-AI-Badge-white.png" alt="not-by-ai-badge">
 		</div>
-		<p class="feet">&copy; 2025 R-Log</p>
 	</footer>
+
 </body>
 </html>
 
