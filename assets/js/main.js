@@ -1,3 +1,24 @@
+// Function to set up the burger menu behavior
+function setupBurger() {
+  let burgerBtn = document.querySelector(".burger-menu-btn");
+  if (burgerBtn) {
+    let burgerMenu = document.querySelector(".burger-menu");
+    let isBurgerOpen = false;
+    burgerBtn.onclick = function() {
+
+      if (!isBurgerOpen) {
+        burgerMenu.style.display = "block";
+        burgerBtn.style.backgroundPosition = "center left 50px, center";
+        isBurgerOpen = true;
+      } else {
+        burgerMenu.style.display = "none";
+        burgerBtn.style.backgroundPosition = "center, center left 50px";
+        isBurgerOpen = false;
+      }
+    };
+  }
+}
+
 // Helper functions to preserve mathblocks
 function preserveMathBlocks(markdown) {
     const mathBlocks = [];
@@ -49,7 +70,11 @@ function loadIncludes(){
     fetch('./includes/header.html')
     .then(response => response.text())
     .then(html => {
-        document.getElementById('navbar').innerHTML = html;
+        document.getElementById('header').innerHTML = html;
+        // Once header is loaded, set up the burger menu
+    let burgerBtn = document.querySelector(".burger-menu-btn");
+    console.log("Burger button:", burgerBtn);
+    setupBurger();
     });
 
 fetch('./includes/footer.html')

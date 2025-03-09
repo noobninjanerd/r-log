@@ -57,3 +57,33 @@ h3{
 .blog-date:hover{
     opacity: 1;
 }
+
+@media only screen and (max-width: 600px){
+    .blog-list{
+        margin:40px 0px;
+    }
+
+    .blog-id h3{
+        margin-top: 6px;
+    }
+
+    .blog-id p{
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: 4px;
+    }
+
+    .blog-list ul{
+        width: 100%;
+    }
+
+    .blog-list ul li a{
+        height: 100%;
+        width: 100%;
+        padding: 5px 10px;
+    }
+
+    .blog-date{
+        display: none;
+    }
+}

@@ -69,3 +69,17 @@ main {
 	background-color: VAR(--yellow-green);
 	border:solid 1px VAR(--yellow-green);
 }
+
+@media only screen and (max-width: 600px){
+    .intro {
+        margin: 50px auto 0px auto;
+    }
+
+    .recent-posts{
+        margin: 35px auto 25px auto;
+    }
+
+    .recent-posts ul li{
+        width: 95%;
+    }
+}

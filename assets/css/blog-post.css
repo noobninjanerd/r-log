@@ -10,10 +10,11 @@ blockquote {
     color: #555;
   }
 
-/*
-  .display-math {
-    text-align: center;
-    margin: 1em auto;
+/* Ensure the MathJax container respects the parent's width */
+.display-math {
+    max-width: 100%;
+    overflow-x: auto; /* Allows horizontal scroll if the content is too wide */
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch; /* for smoother scrolling on touch devices */
 }
-*/  
   
