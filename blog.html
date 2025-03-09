@@ -53,31 +53,7 @@
 
     <footer class="footer-main" id="footer"></footer>
 
-    <script>
-        fetch('./content/Basics-Of-Magnetic-Circuits.md')
-            .then(response => response.text())
-            .then(markdown => {
-                const htmlContent = marked.parse(markdown);
-                document.getElementById('markdown-body').innerHTML = htmlContent;
-                // Re-run MathJax to render any math in the new content
-                if (window.MathJax) {
-                MathJax.typeset();
-                }
-            })
-            .catch(error => console.error('Error loading Markdown:', error));
-
-        fetch('./includes/header.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('navbar').innerHTML = html;
-            });
-
-        fetch('./includes/footer.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('footer').innerHTML = html;
-            });
-    </script>
+    <script src="./assets/js/main.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Modelling Motors</title>
+        <title>B vs H</title>
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,14 +18,25 @@
         <script>
             window.MathJax = {
             tex: {
+                packages: { '[+]': ['ams'] },
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                tags: 'ams',
+                autoload: {ams: ['align', 'gather', 'equation']}
             }
             };
         </script>
 
         <!--MathJax for LaTeX rendering-->
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        
+        <script>
+            marked.use({
+              mangle: false,    // Don't mangle underscores
+              headerIds: false  // Prevent ID generation conflicts
+            });
+        </script>
+        
         <!-- Marked.js for Markdown conversion -->
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     </head>
@@ -43,31 +54,8 @@
 
         <footer id="footer" class="footer-main"></footer>
 
-        <script>
-            fetch('./content/T1.B-vs-H.md')
-                .then(response => response.text())
-                .then(markdown => {
-                    const htmlContent = marked.parse(markdown);
-                    document.getElementById('markdown-body').innerHTML = htmlContent;
-                    // Re-run MathJax to render any math in the new content
-                    if (window.MathJax) {
-                    MathJax.typeset();
-                    }
-                })
-                .catch(error => console.error('Error loading Markdown:', error));
+        <script src="./assets/js/main.js"></script>
 
-            fetch('../../includes/header.html')
-                .then(response => response.text())
-                .then(html => {
-                    document.getElementById('navbar').innerHTML = html;
-                });
-
-            fetch('../../includes/footer.html')
-                .then(response => response.text())
-                .then(html => {
-                    document.getElementById('footer').innerHTML = html;
-                });
-        </script>
     </body>
 
     </html>
