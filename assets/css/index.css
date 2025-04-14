@@ -17,6 +17,11 @@ main p{
     line-height: 30px;
 }
 
+main a{
+    font-size: 18px;
+    line-height: 30px;
+}
+
 main {
     width: 100%; /* 55% is same as 55vw */
     height: fit-content;

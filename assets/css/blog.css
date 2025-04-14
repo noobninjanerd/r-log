@@ -8,6 +8,7 @@
 
 .blog-list h2{
     font-size: 30px;
+    margin-bottom: 70px;
 }
 
 h3{
@@ -23,7 +24,7 @@ h3{
     position: relative; /* for positioning blog-date */
     border: solid 1px black;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;    
     transition: background-color 250ms, opacity 250ms;
 }
 

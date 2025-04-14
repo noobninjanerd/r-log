@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1" >
-    <title>B vs H</title>   
+    <title>Transphobia</title>   
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,13 +17,17 @@
 
     <script>
         window.MathJax = {
-        tex: {
-            packages: { '[+]': ['ams'] },
-            inlineMath: [['$', '$'], ['\\(', '\\)']],
-            displayMath: [['$$', '$$'], ['\\[', '\\]']],
-            tags: 'ams',
-            autoload: {ams: ['align', 'gather', 'equation']}
-        }
+            tex: {
+                macros: {
+                    reals: "\\mathbb{R}",
+                    Z: "\\mathbb{Z}"
+                    },
+                packages: { '[+]': ['ams'] },
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                tags: 'ams',
+                autoload: {ams: ['align', 'gather', 'equation']}
+            }
         };
     </script>
 
@@ -55,7 +59,7 @@
     <main>
         <div class="wrapper-main">
             <article class="blog-post" id="converted-html-body">
-                <!-- Markdown content will be injected here -->
+                <!-- HTML converted from Markdown content will be injected here -->
             </article>
         </div>
     </main>
