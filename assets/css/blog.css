@@ -1,31 +1,24 @@
-.blog-list{
-    margin:100px 0px;
-}
-
-.blog-list h1{
-    font-size: 34px;
-}
-
-.blog-list h2{
-    font-size: 30px;
-    margin-bottom: 70px;
-}
-
 h3{
-    font-size: 26px;
+    margin-bottom: 0.4em;
+}
+
+p {
+    margin-bottom: 0.2em;
 }
 
 .blog-list ul{
     width: 80%;
-    margin: 10px auto;
+    margin: 5% auto 0 auto;
 }
 
 .blog-list ul li{
-    position: relative; /* for positioning blog-date */
     border: solid 1px black;
     display: flex;
     flex-wrap: wrap;    
     transition: background-color 250ms, opacity 250ms;
+    margin-bottom: 3%;
+
+    position: relative; /* for positioning blog-date */
 }
 
 .blog-list ul li:hover{
