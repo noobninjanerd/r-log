@@ -26,6 +26,10 @@ body{
     flex-direction: column;
 }
 
+main{
+	margin-bottom: 5rem;
+}
+
 .wrapper-main{
 	width: 100ch;
 	margin: 0 auto;
@@ -45,15 +49,6 @@ body{
 	justify-content: space-between;
 	align-items: center;
 }
-
-a{
-	cursor: pointer;
-	font-size: 14px;
-	line-height: 24px;
-	color: black;
-	font-family: "Onest";
-	font-weight: 100;
-} 
 
 /* HEADER */
 
@@ -142,7 +137,7 @@ a{
 .not-by-ai-image{
 	width:131px;
 	height: 42px;
-	background-image: url(../pngs/Written-By-Human-Not-By-AI-Badge-white.png);
+	background-image: url(/assets/pngs/Written-By-Human-Not-By-AI-Badge-white.png);
 }
 
 .footer-main-flex{
@@ -162,11 +157,15 @@ a{
 /* Mobile Version */
 @media only screen and (max-width: 600px) {
 
+	.top-margin{
+		margin: calc(75px + 3rem) auto 0 auto;
+	}
+
 	.burger-menu-btn{
 		display: block;
 		width: 50px;
 		height: 50px;
-		background-image: url(../icons/burger-menu.png), url(../icons/close.png);
+		background-image: url(/assets/icons/burger-menu.png), url(/assets/icons/close.png);
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center, center left 50px;

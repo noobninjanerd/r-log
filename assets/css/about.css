@@ -1,12 +1,10 @@
-.pic-wrapper{
-    display: flex;
-}
+/* about.css */
 
 .my-pic-container{
     display: flex;
     justify-content: center;
-    float: right;
-    padding: 10px 10px;
+    float: left;
+    padding: 0px 10px;
 }
 
 .pic-wrapper article{
@@ -18,10 +16,114 @@
 
     width: 300px;
 	height: 300px;
-	background-image: url(../jpgs/me.jpg);
+	background-image: url(/assets/jpgs/me.jpg);
 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 12px;
+}
+
+/* Mobile Version */
+@media only screen and (max-width: 600px) {
+    .pic-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .my-pic-container{
+        margin: 0 auto;
+    }
+
+    .my-pic{
+        width: 225px;
+        height: 225px;
+    }
+
+    .pic-wrapper article{
+        padding: 0 5px;
+        padding-top: 1rem;
+    }
+}
+
+@media only screen and (min-width: 601px) {
+    .pic-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .my-pic-container{
+        margin: 0 auto;
+    }
+
+    .my-pic{
+        width: 240px;
+        height: 240px;
+    }
+
+    .pic-wrapper article{
+        padding: 0 5px;
+        padding-top: 1rem;
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    .pic-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .my-pic-container{
+        margin: 0 auto;
+    }
+
+    .my-pic{
+        width: 250px;
+        height: 250px;
+    }
+
+    .pic-wrapper article{
+        padding: 0 5px;
+        padding-top: 1rem;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .pic-wrapper{
+        display: block;
+    }
+
+    .my-pic-container{
+        display: flex;
+        justify-content: center;
+        float: left;
+
+        padding: 0px 20px 5px 5px;
+    }
+
+    .my-pic{
+        width: 275px;
+        height: 275px;
+
+        margin-top: 10px;
+    }
+
+    .pic-wrapper article{
+        padding: 5px 5px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+	.pic-wrapper{
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .my-pic{
+        width: 300px;
+        height: 300px;
+
+        margin-top: 3.25rem;
+    }
 }

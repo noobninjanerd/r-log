@@ -37,18 +37,33 @@ blockquote {
 } */
 
 /* Ensure the MathJax container respects the parent's width */
-.display-math {
-    max-width: 120%;    
+mjx-container {
+    margin: 2.5rem auto 2rem auto !important;
+    /* !important to override mathjax typesetting */
+    max-width: 100%;    
     overflow-x: auto; /* Allows horizontal scroll if the content is too wide */
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch; /* for smoother scrolling on touch devices */
 }
+
+img{
+    display: block;
+    margin: 1rem auto 1 rem auto;
+}
   
 /* Mobile Version */
 @media only screen and (max-width: 600px){
-    p {
-        font-size : 17px;
-        font-weight: 300;
-        line-height: 140%;
+    .title-card{
+        width: 95%;
+        margin-bottom: 2rem;
+    }
+
+    .meta-data{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    mjx-container {
+        font-size: 1.13rem !important;
     }
 }

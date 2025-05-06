@@ -26,7 +26,7 @@ function setupBurger()
 
 function loadIncludes()
 {
-   fetch('./includes/header.html') // send HTTP GET request, 
+   fetch('/includes/header.html') // send HTTP GET request, 
   // fetch() immediately returns a Promise so that means while .then() waits for the response, the browser moves on and runs code beyond this fetch(): here, that is the next fetch() for the footer 
   .then(response => response.text()) 
   // wait for the previous async event operation to complete (async: we don't know when it'll finish) 
@@ -45,13 +45,13 @@ function loadIncludes()
 
     });
 
-  fetch('./includes/burger.html')
+  fetch('/includes/burger.html')
   .then(response => response.text())
     .then(htmlFromBurgerFile => {
         document.getElementById('burger-nav').innerHTML = htmlFromBurgerFile;
   }); 
 
-  fetch('./includes/footer.html')
+  fetch('/includes/footer.html')
     .then(response => response.text())
       .then(htmlFromFooterFile => {
           document.getElementById('footer').innerHTML = htmlFromFooterFile;
@@ -64,7 +64,7 @@ function loadConvertedHTML()
     let currentFile = window.location.pathname.split('/').pop(); // e.g., "blog1.html"
 
     // Construct the path to the corresponding converted HTML file
-    let srcFilePath = './content/' + currentFile;
+    let srcFilePath = '/content/' + currentFile;
 
     fetch(srcFilePath)
       .then(response => {

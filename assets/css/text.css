@@ -37,3 +37,39 @@ p{
 
     line-height: 1.5;
 }
+
+a{
+	cursor: pointer;
+    font-size: inherit;
+	/* font-size: 14px;
+	line-height: 24px;
+	color: black; */
+	font-family: "Onest";
+	font-weight: 100;
+} 
+
+/* Mobile Version */
+@media only screen and (max-width: 600px){
+    h1{
+        font-size: 1.6rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        border-bottom: solid 1px black;
+        padding-bottom: 0.3rem;
+    
+        margin-bottom: 1.5rem;
+    
+        line-height: 1.5;
+    }
+    
+    p {
+        font-size : 1.125rem;
+        line-height: 1.5;
+        font-weight: 50;
+        
+    }
+
+    h4{
+        font-size: 0.75rem;
+    }
+}
