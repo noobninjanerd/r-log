@@ -1,23 +1,110 @@
-// Function to set up the burger menu behavior
-function setupBurger() {
-  let burgerBtn = document.querySelector(".burger-menu-btn");
-  if (burgerBtn) {
-    let burgerMenu = document.querySelector(".burger-menu");
-    let isBurgerOpen = false;
-    burgerBtn.onclick = function() {
+// assets/js/main.js
 
-      if (!isBurgerOpen) {
-        burgerMenu.style.display = "block";
-        burgerBtn.style.backgroundPosition = "center left 50px, center";
-        isBurgerOpen = true;
-      } else {
-        burgerMenu.style.display = "none";
-        burgerBtn.style.backgroundPosition = "center, center left 50px";
-        isBurgerOpen = false;
-      }
+// JS to set up the burger menu toggle - only for mobiles
+function setupBurger() 
+{
+  let burgerBtn = document.querySelector(".burger-menu-btn"); // grab the burger-menu-button element by it's class from the html
+  if (burgerBtn) 
+  {
+    let burgerMenu = document.querySelector(".burger-menu");
+    let isBurgerMenuOpen = false;
+    burgerBtn.onclick = function() { // anonymous function that is called when click event takes place
+
+      if (!isBurgerMenuOpen)  // if burger-menu is closed
+        {
+          burgerMenu.style.display = "block";
+          burgerBtn.style.backgroundPosition = "center left 50px, center";
+          isBurgerMenuOpen = true;
+        } else {
+          burgerMenu.style.display = "none"; //  remove element from the document
+          burgerBtn.style.backgroundPosition = "center, center left 50px";
+          isBurgerMenuOpen = false;
+        }
     };
   }
 }
+
+function loadIncludes()
+{
+  fetch('./includes/header.html') // send HTTP GET request, 
+  // fetch() immediately returns a Promise so that means while .then() waits for the response, the browser moves on and runs code beyond this fetch(): here, that is the next fetch() for the footer 
+  .then(response => response.text()) 
+  // wait for the previous async event operation to complete (async: we don't know when it'll finish) 
+  // fetch() returns a "Promise" which is a placeholder for "i'll give the RESPONSE as soon as i get it myself"
+    .then(htmlFromHeaderFile => {
+      
+      // response.text() returns all the html from header.html and we place it in the document
+      document.getElementById('header').innerHTML = htmlFromHeaderFile;
+    
+      // Once header is loaded, set up the burger menu
+      setupBurger();
+      // important you keep it in the then. block, 
+      // as the function can only properly run 
+      // once there are proper header html elements to attach the "click listener" to
+
+    });
+
+  fetch('./includes/footer.html')
+    .then(response => response.text())
+    .then(htmlFromFooterFile => {
+        document.getElementById('footer').innerHTML = htmlFromFooterFile;
+  });
+}
+
+function loadConvertedHTML() 
+{
+    // Get the current file name from the URL
+    let currentFile = window.location.pathname.split('/').pop(); // e.g., "blog1.html"
+
+    // Construct the path to the corresponding converted HTML file
+    let srcFilePath = './content/' + currentFile;
+
+    fetch(srcFilePath)
+      .then(response => {
+        if (!response.ok) 
+          { 
+          // .ok is property of the Response object and is a simple true/false flag
+          // .ok === true : the server said 200-299
+          // .ok === false : 404 not found or 500 Error
+          throw new Error("Network response was not ok: " + response.statusText);
+          }
+        
+          return response.text();
+      })
+      .then(htmlContent => {
+        document.getElementById('converted-html-body').innerHTML = htmlContent;
+        
+        // MathJax needs to process the math,
+        if (window.MathJax) 
+          {
+          MathJax.typesetPromise()
+          .catch(err => console.error(err.message));
+          }
+
+      })
+      .catch(error => console.error('Error loading HTML content:', error));
+}
+
+// Initialize the page content when DOM is loaded
+//https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+document.addEventListener('DOMContentLoaded', function() {
+  // DOMContentLoaded event fires when the HTML doc has been completely parsed: 
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
+  // https://stackoverflow.com/questions/73425012/window-domcontentloaded-vs-document-domcontentloaded  
+  
+  // 1. go to the source header and footer html files and inject their content in the ID'd html containers on the document
+  loadIncludes();
+  
+  // Only load converted HTML content if the element exists on the page
+  if (document.getElementById('converted-html-body')) 
+    {
+      // 2. Function to load pre-converted HTML content from ./content/
+      loadConvertedHTML();
+    }
+});
+
+
+// Functions that worked with marked.js -> switched to python for md-to-html conversion now tho
 
 // Helper functions to preserve mathblocks
 // function preserveMathBlocks(markdown) {
@@ -35,7 +122,6 @@ function setupBurger() {
 //     });
 //     return { replaced, mathBlocks };
 // }
-  
   
 // function restoreMathBlocks(html, mathBlocks) {
 //     mathBlocks.forEach((block, index) => {
@@ -65,68 +151,3 @@ function setupBurger() {
 //   })
 //   .catch(error => console.error('Error loading Markdown:', error));
 // }
-
-function loadIncludes(){
-  fetch('./includes/header.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('header').innerHTML = html;
-        // Once header is loaded, set up the burger menu
-    let burgerBtn = document.querySelector(".burger-menu-btn");
-    console.log("Burger button:", burgerBtn);
-    setupBurger();
-  });
-
-  fetch('./includes/footer.html')
-    .then(response => response.text())
-    .then(html => {
-        document.getElementById('footer').innerHTML = html;
-  });
-}
-
-// Function to load pre-converted HTML content from your build
-function loadConvertedHTML() {
-    // Get the current file name from the URL
-    let currentFile = window.location.pathname.split('/').pop(); // e.g., "blog1.html"
-
-    // Construct the path to the corresponding converted HTML file.
-    // Assuming your Python script outputs to "./html-blog/" with the same file name.
-    let srcFilePath = './content/' + currentFile;
-
-    // Now fetch that file
-    fetch(srcFilePath)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok: " + response.statusText);
-        }
-        return response.text();
-      })
-      .then(htmlContent => {
-        document.getElementById('converted-html-body').innerHTML = htmlContent;
-      // Optionally, if MathJax needs to process any math,
-      // you can trigger it here:
-      if (window.MathJax) {
-        MathJax.typesetPromise().catch(err => console.error(err.message));
-      }
-    })
-    .catch(error => console.error('Error loading HTML content:', error));
-}
-
-// Initialize the page content when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  loadIncludes();
-  
-  // Only load converted HTML content if the element exists on the page
-  if (document.getElementById('converted-html-body')) {
-    loadConvertedHTML();
-  }
-});
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   loadIncludes();
-  
-//   // Only load converted HTML content if the element exists on the page
-//   if (document.getElementById('markdown-body')) {
-//     loadMarkdownContent();
-//   }
-// });
