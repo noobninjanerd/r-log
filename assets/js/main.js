@@ -26,7 +26,7 @@ function setupBurger()
 
 function loadIncludes()
 {
-  fetch('./includes/header.html') // send HTTP GET request, 
+   fetch('./includes/header.html') // send HTTP GET request, 
   // fetch() immediately returns a Promise so that means while .then() waits for the response, the browser moves on and runs code beyond this fetch(): here, that is the next fetch() for the footer 
   .then(response => response.text()) 
   // wait for the previous async event operation to complete (async: we don't know when it'll finish) 
@@ -37,6 +37,7 @@ function loadIncludes()
       document.getElementById('header').innerHTML = htmlFromHeaderFile;
     
       // Once header is loaded, set up the burger menu
+
       setupBurger();
       // important you keep it in the then. block, 
       // as the function can only properly run 
@@ -44,10 +45,16 @@ function loadIncludes()
 
     });
 
+  fetch('./includes/burger.html')
+  .then(response => response.text())
+    .then(htmlFromBurgerFile => {
+        document.getElementById('burger-nav').innerHTML = htmlFromBurgerFile;
+  }); 
+
   fetch('./includes/footer.html')
     .then(response => response.text())
-    .then(htmlFromFooterFile => {
-        document.getElementById('footer').innerHTML = htmlFromFooterFile;
+      .then(htmlFromFooterFile => {
+          document.getElementById('footer').innerHTML = htmlFromFooterFile;
   });
 }
 
