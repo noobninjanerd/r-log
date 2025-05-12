@@ -145,26 +145,27 @@ main{
 	border-top: solid 1px var(--dark-grey);
 }
 
-.right-underline li{
-	text-align: right;
+.foot-links ul li{
+	margin-top: 0.4rem;
 }
 
-.left-underline li{
-	text-align: left;
-}
-
-.left-underline li:hover, .right-underline li:hover{
+.foot-links ul li a:hover{
 	text-decoration: underline;
 }
 
-.foot-links ul li{
-	margin-top: 0.4rem;
+.footer-second ul{
+	text-align: right;
 }
 
 .not-by-ai-image{
 	width:131px;
 	height: 42px;
 	background-image: url(/assets/img/Written-By-Human-Not-By-AI-Badge-white.webp);
+}
+
+.not-by-ai-image a{
+	display: block;
+	height: 100%;
 }
 
 .footer-main-flex{
@@ -275,19 +276,32 @@ main{
 	.line-div{
 		width:100%;
 	}
+
 	.line-div div{
 		width: 45%;
 		margin: 0 auto;
 		border-bottom: solid 1px black;
 	}
 
-	.not-by-ai-image{
+	.footer-second{
 		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+	
+	.footer-second ul li{
+		width: 100%;
+	}
+
+	.not-by-ai-image{
+		/* width: 100%; */	
+		/* display: block;
+		margin-left: auto;
+		margin-right: auto; */
 		background-repeat: no-repeat;
 		background-position: center;
 	}
 }
-
 
 @media only screen and (min-width: 601px) {
 	.wrapper-main{

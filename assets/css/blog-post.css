@@ -28,7 +28,7 @@
     justify-content:space-between;
 }
 
-p{
+main p{
     /* text-indent: 0.5rem; */
     text-align: justify;
 }
@@ -55,14 +55,13 @@ mjx-container[display="true"] {
     margin: 1.5rem auto 1rem auto !important;
     padding: 2rem 0px;
     /* !important to override mathjax typesetting */
+    
     max-width: 100%;    
-    overflow-x: auto; /* Allows horizontal scroll if the content is too wide */
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch; /* for smoother scrolling on touch devices */
 
-    /* background-color: aqua; */
     position: relative;
-    overflow: visible;
+    /* overflow: visible; */
 }
 
 mjx-container[display="true"]::before{
@@ -76,7 +75,7 @@ mjx-container[display="true"]::before{
     z-index: 1;
     opacity: 0.8;
 
-    box-shadow: -10px 10px var(--coffee-dark);
+    box-shadow: -0.8rem 0.8rem var(--coffee-dark);
 }
 
 mjx-container[display="true"] mjx-math {
@@ -106,8 +105,20 @@ img{
         justify-content: center;
     }
 
-    mjx-container {
+    mjx-container[display="true"] {
         font-size: 1.13rem !important;
+        padding: 1rem;
+        /* overflow-x: auto; Allows horizontal scroll if the content is too wide */
+        overflow-x: auto; /* Allows horizontal scroll if the content is too wide */
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch; /* for smoother scrolling on touch devices */
+        
+        background-color: var(--coffee-grey-2);
+        box-shadow: -0.4em 0.4em var(--coffee-dark);
+    }
+
+    mjx-container[display="true"]::before {
+        display: none;
     }
 
     blockquote {
@@ -119,4 +130,8 @@ img{
     blockquote p{
         font-size: 1.025rem;
     }
+
+    /* img{
+        width: 90
+    } */
 }   
