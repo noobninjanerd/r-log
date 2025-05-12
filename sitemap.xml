@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://www.r-log.pages.dev/</loc>
+        <lastmod>2025-05-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://www.r-log.pages.dev/blog/</loc>
+        <lastmod>2025-05-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://www.r-log.pages.dev/about/</loc>
+        <lastmod>2025-05-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://www.r-log.pages.dev/posts/motor_modelling/01_B-vs-H</loc>
+        <lastmod>2025-05-07</lastmod>
+    </url>
+
+        <url>
+        <loc>https://www.r-log.pages.dev/posts/transphobia/01_Transphobia</loc>
+        <lastmod>2025-05-07</lastmod>
+    </url>
+
+</urlset>

@@ -1,3 +1,8 @@
+/* main{
+    margin-top: 60px;
+    box-shadow: inset 0 0 10px 0.2rem black;
+} */
+
 .title-card{
     width: 80ch;
     margin-left: auto;
@@ -23,27 +28,65 @@
     justify-content:space-between;
 }
 
+p{
+    /* text-indent: 0.5rem; */
+    text-align: justify;
+}
+
 blockquote {
-    border-left: 4px solid #685c51;
-    padding-left: 0.4em;
-    margin-left: 1em;
-    color: #555;
+    border-left: 0.3rem solid #685c51;
+    padding-left: 0.8rem;
+    margin-left: 1.5rem;
+    color: var(--coffee);
+}
+
+blockquote p{
     font-size: 1rem;
     font-style: italic;
-  }
+    line-height: 1.8;
+}
 
 /* mjx-container{
     background-color: red;
 } */
 
 /* Ensure the MathJax container respects the parent's width */
-mjx-container {
-    margin: 2.5rem auto 2rem auto !important;
+mjx-container[display="true"] {
+    margin: 1.5rem auto 1rem auto !important;
+    padding: 2rem 0px;
     /* !important to override mathjax typesetting */
     max-width: 100%;    
     overflow-x: auto; /* Allows horizontal scroll if the content is too wide */
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch; /* for smoother scrolling on touch devices */
+
+    /* background-color: aqua; */
+    position: relative;
+    overflow: visible;
+}
+
+mjx-container[display="true"]::before{
+    content:"";
+    background-color: var(--coffee-grey-2);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0.4rem;
+    bottom: 0.3rem;
+    z-index: 1;
+    opacity: 0.8;
+
+    box-shadow: -10px 10px var(--coffee-dark);
+}
+
+mjx-container[display="true"] mjx-math {
+    position: relative;
+    z-index: 2;
+}
+
+mjx-container:not([display="true"]) {
+  /* no background here */
+  background-color: transparent;
 }
 
 img{
@@ -66,4 +109,14 @@ img{
     mjx-container {
         font-size: 1.13rem !important;
     }
-}
+
+    blockquote {
+        border-left: 0.215rem solid #685c51;
+        padding-left: 0.725rem;
+        margin-left: 1rem;
+    }
+
+    blockquote p{
+        font-size: 1.025rem;
+    }
+}   

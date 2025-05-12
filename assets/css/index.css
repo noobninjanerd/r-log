@@ -10,6 +10,7 @@ main {
 .intro article{
     width: 100%;
     margin: 5px auto;
+    text-align: justify;
 }
 
 /* My recent posts section */
@@ -30,6 +31,8 @@ main {
 	width: 80%;
     height: 65px;
 	margin: 25px auto 25px auto;
+
+    background-color: var(--beige-2);
 
 	border:solid 1px #000;
     display: flex;
