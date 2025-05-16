@@ -4,27 +4,32 @@
 
     <url>
         <loc>https://www.r-log.pages.dev/</loc>
-        <lastmod>2025-05-07</lastmod>
+        <lastmod>2025-10-07</lastmod>
     </url>
 
     <url>
         <loc>https://www.r-log.pages.dev/blog.html</loc>
-        <lastmod>2025-05-07</lastmod>
+        <lastmod>2025-10-07</lastmod>
     </url>
 
     <url>
         <loc>https://www.r-log.pages.dev/about.html</loc>
-        <lastmod>2025-05-07</lastmod>
+        <lastmod>2025-10-07</lastmod>
     </url>
 
     <url>
-        <loc>https://www.r-log.pages.dev/posts/motor_modelling/01_B-vs-H.html</loc>
-        <lastmod>2025-05-07</lastmod>
+        <loc>https://www.r-log.pages.dev/posts/something_about_Magnetic_Circuits/01_B_and_H.html</loc>
+        <lastmod>2025-10-07</lastmod>
     </url>
 
-        <url>
-        <loc>https://www.r-log.pages.dev/posts/transphobia/01_Transphobia.html</loc>
-        <lastmod>2025-05-07</lastmod>
+    <url>
+        <loc>https://www.r-log.pages.dev/posts/transphobia/00_Transphobia.html</loc>
+        <lastmod>2025-10-07</lastmod>
+    </url>
+
+    <url>
+        <loc>https://www.r-log.pages.dev/posts/transphobia/01_Modelling_the_Real_World.html</loc>
+        <lastmod>2025-10-07</lastmod>
     </url>
 
 </urlset>

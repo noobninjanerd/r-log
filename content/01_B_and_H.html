@@ -1,0 +1,92 @@
+<div class="title-card">
+
+    <h1>$\vec{B}?$ $\vec{H}?$</h1>
+
+    <div class="series">
+        <h4>E01, Something about Magnetic Circuits</h4>
+    </div>
+
+    <div class="meta-data">
+        <div>
+            <h4>Modified: May 16, 2025 08:26 PM</h4>
+        </div>
+        <div>
+            <h4> Posted: March 5, 2025 11:18 PM</h4>
+        </div>       
+    </div>
+    
+</div>
+
+<div class="wrapper-read">
+    <p>There’s quite some confusion surrounding these two terms. <strong>H</strong> is the <strong>magnetic field intensity</strong>, whereas <strong>B</strong> is the <strong>magnetic flux density</strong>. That is definitely not adequate. Let’s try to unwrap this.</p>
+    <p>We start with the good ole Biot-Savart law, used to calculate the magnetic field of a current element. Just for the sake of recollection:</p>
+    <p>
+    $$
+    \vec{dB} = \frac{\mu_0}{4 \pi}\frac{I \vec{dl} \times \vec{(r-l)}}{|r-l|^3} \qquad \mu_0 = 4 \pi 10^{-7} \text{ henry/meter}
+    $$
+    </p>
+    <p>If an infinitesimal element on a conductor, at a position $l$ has $I$ amount of current flowing through it, then at $r$, the magnetic field generated due to the current element $I \vec{dl}$ is given by $\vec{dB}$. </p>
+    <p>But here’s the kicker, this equation works well only in free-space. If there’s any medium or material which can get “magnetised” in the vicinity of this current element, then the net field at that point will be a vector sum of the “generated field” and the “magnetisation of the medium caused by the generated field”.</p>
+    <p>So a certain part of the net field comes from external currents and a certain part comes from the material itself!</p>
+    <p>Say, we have multiple turns of a conductor (solenoid), and we pass current through it. This current will generate a magnetic field $B_0$ and we can visualise the flux lines going through the interior of the solenoid, which is currently just air.</p>
+    <p>Say we put a material inside the solenoid, which is magnetic, i.e. it has non-zero <strong>magnetisation</strong>. A circulating electron in an atom has a moment, and these magnetic moments add up to give a net magnetic moment. This net magnetic moment per unit volume is defined to be the <strong>magnetisation</strong> of a material sample,  </p>
+    <p>
+    $$
+    \vec{M} = \frac{\vec{m_{net}}}{V}
+    $$
+    </p>
+    <p>Now, the net generated field in the interior of the solenoid will be greater than $B_0$, </p>
+    <p>
+    $$
+    B_{net} = B_0 + B_m
+    $$
+    </p>
+    <p><strong>$B_m$</strong> turns out to be proportional to the magnetisation <strong>M</strong> of the material that we chuck inside the solenoid: $\vec{B_m} = \mu_0 \vec{M}$. So the smart guys made a new term.</p>
+    <p>A vector field <strong>H</strong> is defined, that is to be the result of solely the external currents applied to the solenoid, irrespective of the core material that we put inside it and it’s magnetic response,  ****</p>
+    <p>
+    $$
+    \vec{H} =
+    \frac{\vec{B_0}}{\mu_0} = \frac{\vec{B_{net}}}{\mu_0} - \vec{M}
+    $$
+    </p>
+    <p>In other words, <strong>H</strong> describes the part of the field generated from applying the current to a material, and not from the material’s intrinsic magnetic properties. Whereas <strong>B</strong> in general, is the net magnetic field strength. </p>
+    <p>For a non-magnetic material (e.g., free-space), they are related as such,</p>
+    <p>
+    $$
+    B = \mu_0 H \text{ weber/m}^2 \text{ or T} \qquad \text{as }\vec{M}=0
+    $$
+    </p>
+    <p>Quoting from this <a href="https://physics.stackexchange.com/a/283484" target="_blank" rel="noopener noreferrer">StackExchange</a> answer: </p>
+    <blockquote>
+    <p>Electric current $I$ produces around itself magnetic field strength "$\vec{H}$" (also called as <strong>"Magnetic field intensity"</strong>) regardless the type of the surrounding medium. <strong>"Magnetic Flux density"</strong> ”$\vec{B}$” is a response of the medium to the applied excitation $\vec{H}$.
+    </p>
+    </blockquote>
+    <p>Guess what, there is another layer to this. </p>
+    <p><strong>H</strong> is the field caused due to external factors, such as current that is applied to a material. </p>
+    <p>The <strong>M</strong> for a material, is responsible for the part of the net field caused due to the magnetic properties of the material itself. </p>
+    <p>The field due to <strong>M</strong>, is also influenced by external factors. The dependence of <strong>M</strong> on external factors is given through this relation,</p>
+    <p>
+    $$
+    \vec{M} = \chi \vec{H}
+    $$
+    </p>
+    <p>where $\chi$ is the <strong>magnetic susceptibility</strong> of the material, and is a measure of how a magnetic material responds to an external field.</p>
+    <p>Mathematically,</p>
+    <p>
+    $$
+    \begin{align*}
+    \vec{B_{net}}
+    &= B_0 + B_m \\
+    &= \mu_0 (\vec{H}+\vec{M}) \\
+    &= \mu_0(1+\chi)\vec{H} \\
+    &= \mu_0 \mu_r \vec{H} \\
+    &= \mu \vec{H}
+    \end{align*}
+    $$
+    </p>
+    <p>Of course, they created another new term - $\mu_r$ is the <strong>relative magnetic permeability</strong> of the substance, and $\mu$ is the <strong>magnetic permeability</strong>. </p>
+    <h3>References</h3>
+        <ul class="references">
+            <li><a href="https://ncert.nic.in/textbook/pdf/leph105.pdf" target="_blank" rel="noopener noreferrer">Class 12 NCERT: Magnetism & Matter</a></li>
+        </ul>
+</div>

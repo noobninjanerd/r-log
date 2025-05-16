@@ -1,0 +1,230 @@
+<div class="title-card">
+
+    <h1>Modelling the Real World</h1>
+
+    <div class="series">
+        <h4>E01, Transphobia</h4>
+    </div>
+
+    <div class="meta-data">
+        <div>
+            <h4>Modified: May 16, 2025 09:04 PM</h4>
+        </div>
+        <div>
+            <h4> Posted: March 14, 2025 12:08 PM</h4>
+        </div>       
+    </div>
+    
+</div>
+
+<div class="wrapper-read">
+    <p>How do we express a physical phenomenon? How do we work with it, without having to elaborately set things up “physically”? How do we design systems around these physical phenomena to control them? We use math.</p>
+    <p>The real world operates in continuous-time, and we have continuous-time functions representing these real-world systems and signals - $f(t)$. </p>
+    <h2>Systems</h2>
+    <p>We can define a system to be a black-box that processes inputs to deliver outputs. When an input is applied and the system delivers an output, we can say a process has happened.</p>
+    <h3>Static Systems</h3>
+    <p>Say we have a resistor, and we apply a DC voltage across it. We get a current according to the Ohm’s Law, $i = \dfrac{v}{R}$. The DC power supply and the resistor work together, and the system is in a state where it is conducting current. Next, we disconnect the power supply, no more current. What are the real world functions here?</p>
+    <p>We could write,</p>
+    <p>
+    $$
+    i(t) = \frac{v(t)}{R}
+    $$
+    </p>
+    <p>But the DC voltage, does not change with time - it is not a function of time (ideally). The output is related to the input, directly, without any meddling from Mr. $t$ . What we have is a <strong>static</strong> (or memory-less) system. It <em>is</em> a continuous-time system, a real world system, <em>but</em> time doesn’t really have a very significant part to play in the system’s evolution. The system is just a chill guy, it’s present state easily predictable by it’s present input.</p>
+    <p>What if the system does have memory? What if it requires more information, than just the present input to deliver an output<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>? We call such a system to be <strong>dynamic</strong>. At this point, I am legally obligated to talk about the spring-mass system. // Let’s yap a little first, before getting into the math.</p>
+    <h3>The Spring-Mass System</h3>
+    <p>A mass connected to a spring, if displaced will oscillate. </p>
+    <p>Let’s displace it by 5 cm (from some reference point, on the x-axis), in a direction away from the mount point of the spring. The spring will pull the mass towards the mount point. At 4 cm, the mass would have gained some speed. At 3 cm, it would be faster. At 0 cm, it’s the fastest.</p>
+    <p><img alt="modelling-real-world-1.png" src="/assets/img/modelling-real-world-1.png" /></p>
+    <p>We know, the spring force is $F=-kx$. So, at 0 cm, the force is zero. But the mass is at it’s fastest velocity at this point. And despite the force being zero, it will go further, on to the -1 cm point and beyond. </p>
+    <p>By just looking at the current input, i.e. $x = 0$ cm, we wouldn’t have been able to predict that the mass would move.</p>
+    <p><em>Question</em>: I have resistor $R$, and I connect a DC supply voltage $v$ across it. Will there be current?</p>
+    <p>You will not only tell me whether there will be current, but also it’s value.<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></p>
+    <p><em>Question</em>: I have a mass connected to the spring, and it’s force equation is $F = -kx$. The displacement, $x$ is $0$ cm. Will there be motion?</p>
+    <p>You would very intuitively ask for more information, because you are a smarty.</p>
+    <p>The extra information, the context in which the system is existing, is essential to figure out what the output will be - for dynamical systems. And the way we convert this context from a verbal-description to more concrete math, is by means of differential equations.</p>
+    <p>For the spring-mass system, we have the equation</p>
+    <p>
+    $$
+    \begin{align*}
+    F &= -kx \\
+    m a + kx &= 0 \\
+    m \frac{d^2}{dt^2}x + kx &= 0 \\[0.5em]
+    m \ddot{x} + kx &= 0
+    \end{align*}
+    $$
+    </p>
+    <p>That’s a differential equation! If you are like me, you are probably more well-versed with the <em>rate-of-change</em> and <em>area-under-curve</em> definitions of derivatives and integrals, and so how these relate to the history of the system and it’s inputs may come across as rather unintuitive.</p>
+    <h2>Differential Equations and their connection with Life</h2>
+    <p>The solution to a differential equation, is a <strong>function</strong> - <strong>whose derivative(s), and/or the function itself</strong> - if substituted in the differential equation, satisfy it. </p>
+    <p>Taking a look at the Fundamental Theorem of Calculus (, Part I), which relates differentiation and integration, </p>
+    <blockquote>
+    <p>If $f(x)$  is continuous over an interval $[a,b]$ and the function $F(x)$ is defined by,</p>
+    <p>
+    $$
+    F(x) = \int_a^x f(\tau) \, d\tau
+    $$
+    </p>
+    <p>then $F'(x) = f(x)$ over $[a,b]$.
+    </p>
+    </blockquote>
+    <p>You must be tempted to mock it’s trivial nature - of course, if we integrate a function, and then differentiate the result of integration, we will get the original function itself. But this triviality is often easy to overlook, once one sits to down to solve a scary differential equation (cue the heat equation). </p>
+    <p>Let’s see the Evaluation Theorem (Fundamental Theorem of Calculus, Part II), which follows from the above,</p>
+    <blockquote>
+    <p>If $f(x)$  is continuous over the interval $[a,b]$ and $F(x)$ any integral of $f(x)$, then</p>
+    <p>
+    $$
+    \int_a^b f(\tau) \, d\tau = F(a) - F(b)
+    $$
+    </p>
+    </blockquote>
+    <p>One could also write, </p>
+    <p>
+    $$
+    F(t) - F(0) = \int_0^t f(\tau) \, d\tau
+    $$
+    </p>
+    <p>What if $f(x)$ represented some state, like the velocity of the mass in a spring-mass damper system?</p>
+    <p>
+    $$
+    x(t) = x(0) + \int_0^t\dot{x}(\tau) \, d\tau
+    $$
+    </p>
+    <p>This equation says, that the current position of the mass, is a result of the initial position added with all the changes in velocity it has endured over time $t$. Before you say “like DUH”, let’s to appreciate the fact that we just translated a rather <em>intuitive-in-human-language</em> sentence into a <em>math</em> sentence.</p>
+    <h3></h3>
+    <p>A derivative tells us how the state (whose derivative is taken) is instantaneously changing, how rapidly or slowly. From the initial condition till the present, this derivative changes, at each instant of time.</p>
+    <p>For e.g., </p>
+    <p>
+    $$
+    A\ddot{x}(t) + B\dot{x}(t) + Cx(t) = 0
+    $$
+    </p>
+    <p>Say $x(t_0)$ is the position of some object, at time instant $t = t_0$. Then the above differential equation, relates the object’s position, speed and acceleration at that very instant. At $t = t_0 + \delta t$, the position, speed and acceleration change - according to the rules set by this DE, which itself remains the same. It gives direction for evolution, and as time progresses, captures the state of the system at each instant. It’s the director and the camera-man for the system’s movie. </p>
+    <p>We want to know what this $x(t)$ looks like - what $x(t)$ follows the rules of this DE. We need a good actor for this role. So we create a job-description for our candidates. </p>
+    <p>We accumulate all the information available to us - how the derivative changes over the given time, given the system memory - the initial conditions. And by accumulation, I mean, integration.</p>
+    <h3>In Conclusion</h3>
+    <p>A differential equation, arranges and relates the “instantaneous-rates-of-change” of a system’s variables, in a way that mirrors the physical processes occurring in the system. A system can have a lot of changes happening and a differential equation tries to model these changes as closely as possible.</p>
+    <p>And then the solution to a differential equation is a unified function, whose derivatives, whose “rate-of-changes”, align with those, that are represented by the differential equation. It is to be noted that the derivative is a local concept - it exists at an instant. We need to know the entire history of the derivative, change at all instants. </p>
+    <p>These changes are integrated, or “accumulated” over the necessary time interval, till present, and give us the present state of the system represented by that differential equation.  </p>
+    <p>A dynamic system’s present state is the cumulative result of all past changes. mic-drop.</p>
+    <p>I guess we are done here. Unless, you want some numerical action?</p>
+    <h2>Example in Action</h2>
+    <p>Let’s go back to our spring-mass system.</p>
+    <p>
+    $$
+    m \ddot{x} + kx = 0
+    $$
+    </p>
+    <p>Say $m = 1 \text{ kg},$  and $k=5 \text{ N/m}$. </p>
+    <p>Writing the auxilliary equation and finding it’s roots,</p>
+    <p>
+    $$
+    \begin{align*}
+    \frac{d^2}{dt^2}x + 5x &= 0 \\[0.25em]
+    (D^2 + 5)x &= 0 \\
+    (m^2 + 5)x &= 0 \\
+    m = \frac{-0 \pm \sqrt{0-4(1)(5)}}{2} &= \pm \sqrt5j
+    \end{align*}
+    $$
+    </p>
+    <p>Writing the complementary function (aka the natural response), </p>
+    <p>
+    $$
+    \begin{align*}
+    \text{CF}: x(t) &= c_1 e^{m_1t} + c_2 e^{m_2t} \\
+    x(t) &=  c_1e^{j\sqrt5t} + c_2e^{-j\sqrt5t}
+    \end{align*}
+    $$
+    </p>
+    <p>Notice that there are two exponential terms, raised to the power of imaginary numbers - implying the position of the mass will be a sum of sinusoids (from Euler’s formula). And the size (scaling) of these sinusoids, will depend on $c_1$ and $c_2$ - which capture the <strong>memory of the system.</strong></p>
+    <p>How do we find $c_1$ and $c_2$? We need two linear algebraic equations. To get those, we need more information, information we call the <strong>initial conditions</strong>. What caused the system dynamics to come into the present action? </p>
+    <p>Let’s say at $t = 0$, we gave the system a displacement of 1 unit, $x=1, \, \text{ i.e. } \, x(0) = 1$ . This is an initial condition! Let’s get our first linear algebraic equation by plugging this in the general solution,</p>
+    <p>
+    $$
+    \bf{c_1 + c_2 = 1}
+    $$
+    </p>
+    <p>We need another one. We make one up. How about the mass was at rest initially, when we displaced it by 1 unit? That makes the velocity, $\dot{x}(0) = 0$ . We get</p>
+    <p>
+    $$
+    \begin{align*}
+    \dot{x}(t) &= j\sqrt5c_1e^{j\sqrt5t}  - j\sqrt5c_2e^{-j\sqrt5t}\\
+    0 &= j\sqrt5c_1  - j\sqrt5c_2 \\
+    \bf{c_1} &\bf{= c_2} \\ 
+    \end{align*}
+    $$
+    </p>
+    <p>Solving the two algebraic equations, gives us our constants: $\implies c_1, c_2 = 0.5$</p>
+    <p>With our constants now, we can write a more specific, <strong>particular solution</strong>,</p>
+    <p>
+    $$
+    x(t) = 0.5(e^{j\sqrt5t} + e^{-j\sqrt5t})
+    $$
+    </p>
+    <p>We can expand the exponential terms using Euler’s formula to arrive at something which represents real-world motion more nicely,</p>
+    <p>
+    $$
+    \begin{aligned}
+    x(t) &= 0.5 \left[ \cos(\sqrt5t) + j \sin(\sqrt5t) + \cos(-\sqrt5t) + j \sin(-\sqrt5t) \right] \\
+    x(t) &= \cos(\sqrt5t)
+    \end{aligned}
+    $$
+    </p>
+    <p>So a $1 \text{ kg}$ mass, connected to a spring of spring constant $k = 5 \text{ N/m}$, if first displaced by 1 unit and then kept still; if once released, it’s position will evolve like a cosine wave with a frequency of $\omega = \sqrt5 \text{ rad/s}$ or $f = \dfrac{\sqrt5}{2 \pi} \text{ hz}$ (cycles per second), for eternity. </p>
+    <h3>Bonus: Applying FTC to a Differential Equation</h3>
+    <p>For the same spring-mass system, with the same initial conditions, </p>
+    <p>
+    $$
+    \begin{aligned}
+    m\ddot{x}(t) &= -kx(t)\\
+    x(0) &= 1 \\
+    \dot{x}(0) &= 0 
+    \end{aligned}
+    $$
+    </p>
+    <p>Applying the FTC to the acceleration, </p>
+    <p>
+    $$
+    \begin{aligned}
+    \dot{x}(t) &= \dot{x}(0) +
+    \int_0^t \ddot{x}(\tau) \, d\tau \\
+    \dot{x}(t) &=
+    \int_0^t \ddot{x}(\tau) \, d\tau \\
+    \dot{x}(t) &=
+    - \int_0^t \frac{k}{m}{x}(\tau) \, d\tau 
+    \end{aligned}
+    $$
+    </p>
+    <p>Try and convert this above equation to English. </p>
+    <p>And for the position,</p>
+    <p>
+    $$\begin{aligned}
+    x(t) &= x(0) +
+    \int_0^t \dot{x}(\tau) \, d\tau \\
+    x(t) &=
+    1 + \int_0^t \dot{x}(\tau) \, d\tau \\
+    x(t) &=
+    1 - \frac{k}{m} \int_0^t \, \left[ \int_0^\tau {x}(\lambda) \, d\lambda \right] \, d\tau
+    \end{aligned}$$
+    </p>
+    <p>This is an <strong>integral equation</strong>, for the spring-mass system. It is made up of integrals, instead of derivatives. Both forms of representation of a dynamic system convey the same underlying relationship. Integral equations are definitely more complicated to solve directly for an explicit solution - but they provide a perspective that is quite useful for analysis and building intuition. </p>
+    <p>Integral equations can be solved via various iterative methods and even integral transforms (yes - Laplace and Fourier transforms are examples of integral transforms).</p>
+    
+    <div class="footnote">
+    <hr />
+    <ol>
+    <li id="fn:1">
+    <p>In other words, the output is a result of the present input and the preceding history of inputs&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+    <p>and then you will also make fun of me for asking such an easy question&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+    </li>
+    </ol>
+    </div>
+
+    <p>References</p>
+    <ul class="references">
+        <li><a href="https://electronics.stackexchange.com/questions/86489/relation-and-difference-between-fourier-laplace-and-z-transforms" target="_blank" rel="noopener noreferrer">EE StackExchange: Relation and difference between Fourier, Laplace and Z transforms</a></li>
+        <li><a href="https://ncert.nic.in/textbook/pdf/lemh203.pdf" target="_blank" rel="noopener noreferrer">Class 12 NCERT: Differential Equations</a></li>
+    </ul>
+</div>

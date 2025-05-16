@@ -7,7 +7,7 @@
     width: 80ch;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
 
     display: flex;
     flex-wrap: wrap; 
@@ -21,10 +21,15 @@
     margin-bottom: 0.6rem;
 }
 
+.series{
+    margin-bottom: 0.8em;
+    text-decoration: underline;
+}
+
 .meta-data{
     width: 95%;
     display: flex;  
-    margin: 0;
+    margin-top: 1em;
     justify-content:space-between;
 }
 
@@ -44,6 +49,40 @@ blockquote p{
     font-size: 1rem;
     font-style: italic;
     line-height: 1.8;
+}
+
+.references{
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    list-style: circle;
+    /* text-indent: 0.5em; */
+}
+
+em{
+    font-style: italic;
+}
+
+ol{
+    padding-left: 1.8em;
+    padding-right: 2em;
+    list-style: decimal;
+    font-size: 0.85rem;
+}
+
+ol li p{
+    font-size: 0.95rem;
+    margin-bottom: 0.5em;
+}
+
+p sup{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 0.75em; 
+    font-weight: 700;
+    font-style: italic;
+
+    vertical-align: super;   /* browser’s “superscript” position */
+    line-height: 1; 
+    color: #0000EE;
 }
 
 /* mjx-container{
@@ -90,7 +129,7 @@ mjx-container:not([display="true"]) {
 
 img{
     display: block;
-    margin: 1rem auto 1rem auto;
+    margin: 1.5rem auto 1.5rem auto;
 }
   
 /* Mobile Version */
