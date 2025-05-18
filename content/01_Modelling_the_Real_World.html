@@ -31,11 +31,11 @@
     $$
     </p>
     <p>But the DC voltage, does not change with time - it is not a function of time (ideally). The output is related to the input, directly, without any meddling from Mr. $t$ . What we have is a <strong>static</strong> (or memory-less) system. It <em>is</em> a continuous-time system, a real world system, <em>but</em> time doesn’t really have a very significant part to play in the system’s evolution. The system is just a chill guy, it’s present state easily predictable by it’s present input.</p>
-    <p>What if the system does have memory? What if it requires more information, than just the present input to deliver an output<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>? We call such a system to be <strong>dynamic</strong>. At this point, I am legally obligated to talk about the spring-mass system. // Let’s yap a little first, before getting into the math.</p>
+    <p>What if the system does have memory? What if it requires more information, than just the present input to deliver an output<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>? We call such a system to be <strong>dynamic</strong>. At this point, I am legally obligated to talk about the spring-mass system.</p>
     <h3>The Spring-Mass System</h3>
     <p>A mass connected to a spring, if displaced will oscillate. </p>
     <p>Let’s displace it by 5 cm (from some reference point, on the x-axis), in a direction away from the mount point of the spring. The spring will pull the mass towards the mount point. At 4 cm, the mass would have gained some speed. At 3 cm, it would be faster. At 0 cm, it’s the fastest.</p>
-    <p><img alt="modelling-real-world-1.png" src="/assets/img/modelling-real-world-1.png" /></p>
+    <p><img alt="modelling-real-world-1.png" src="/assets/img/modelling-real-world-1.png"/></p>
     <p>We know, the spring force is $F=-kx$. So, at 0 cm, the force is zero. But the mass is at it’s fastest velocity at this point. And despite the force being zero, it will go further, on to the -1 cm point and beyond. </p>
     <p>By just looking at the current input, i.e. $x = 0$ cm, we wouldn’t have been able to predict that the mass would move.</p>
     <p><em>Question</em>: I have resistor $R$, and I connect a DC supply voltage $v$ across it. Will there be current?</p>
@@ -91,15 +91,15 @@
     $$
     </p>
     <p>This equation says, that the current position of the mass, is a result of the initial position added with all the changes in velocity it has endured over time $t$. Before you say “like DUH”, let’s to appreciate the fact that we just translated a rather <em>intuitive-in-human-language</em> sentence into a <em>math</em> sentence.</p>
-    <h3></h3>
+    <h3>More specifically</h3>
     <p>A derivative tells us how the state (whose derivative is taken) is instantaneously changing, how rapidly or slowly. From the initial condition till the present, this derivative changes, at each instant of time.</p>
     <p>For e.g., </p>
     <p>
-    $$
-    A\ddot{x}(t) + B\dot{x}(t) + Cx(t) = 0
-    $$
+        $$
+        A\ddot{x}(t) + B\dot{x}(t) + Cx(t) = 0
+        $$
     </p>
-    <p>Say $x(t_0)$ is the position of some object, at time instant $t = t_0$. Then the above differential equation, relates the object’s position, speed and acceleration at that very instant. At $t = t_0 + \delta t$, the position, speed and acceleration change - according to the rules set by this DE, which itself remains the same. It gives direction for evolution, and as time progresses, captures the state of the system at each instant. It’s the director and the camera-man for the system’s movie. </p>
+    <p>Say $x(t_0)$ is the position of some object, at time instant $t = t_0$. Then the above differential equation, relates the object’s position, speed and acceleration at that very instant. At $t = t_0 + \delta t$, the position, speed and acceleration change - according to the rules set by this DE, which itself remains the same. It gives direction for evolution, and as time progresses, captures the state of the system at each instant. It’s the director and the camera-man for the system’s movie.</p>
     <p>We want to know what this $x(t)$ looks like - what $x(t)$ follows the rules of this DE. We need a good actor for this role. So we create a job-description for our candidates. </p>
     <p>We accumulate all the information available to us - how the derivative changes over the given time, given the system memory - the initial conditions. And by accumulation, I mean, integration.</p>
     <h3>In Conclusion</h3>
