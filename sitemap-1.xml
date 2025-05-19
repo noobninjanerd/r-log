@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://r-log.pages.dev/</loc>
+        <lastmod>2025-05-07T20:38:48+00:00</lastmod>
+    </url>
+
+    <url>
+        <loc>https://r-log.pages.dev/blog</loc>
+        <lastmod>2025-05-07T20:38:48+00:00</lastmod>
+    </url>
+
+    <url>
+        <loc>https://r-log.pages.dev/about</loc>
+        <lastmod>2025-05-07T20:38:48+00:00</lastmod>
+    </url>
+
+    <url>
+        <loc>https://r-log.pages.dev/posts/something_about_magnetic_circuits/01_B_and_H</loc>
+        <lastmod>2025-05-07T20:38:48+00:00</lastmod>
+    </url>
+
+    <url>
+        <loc>https://r-log.pages.dev/posts/transphobia/00_Transphobia</loc>
+        <lastmod>2025-05-07T20:38:48+00:00</lastmod>
+    </url>
+
+    <url>
+        <loc>https://r-log.pages.dev/posts/transphobia/01_Modelling_the_Real_World</loc>
+        <lastmod>2025-05-07T20:38:48+00:00</lastmod>
+    </url>
+
+</urlset>
