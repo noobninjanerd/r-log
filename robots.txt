@@ -3,4 +3,3 @@ Disallow:
 Allow: /
 
 Sitemap: https://r-log.pages.dev/sitemap.xml
-Sitemap: https://r-log.pages.dev/sitemap-1.xml
