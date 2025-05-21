@@ -1,9 +1,10 @@
 main {
     width: 100%; /* 55% is same as 55vw */
     height: fit-content;
+    padding: 0 1em;
 
     /* margin: 65px auto 0px auto; */
-    padding: 15px 25px;
+    /* padding: 1em 2em; */
     /* background-color: rgb(247, 229, 207); */
 }
 
@@ -57,6 +58,10 @@ main {
 
     .recent-posts{
         margin: 35px auto 25px auto;
+    }
+
+    .recent-posts ul{
+        width: 100%;
     }
 
     .recent-posts ul li{

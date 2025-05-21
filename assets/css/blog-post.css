@@ -39,10 +39,12 @@ main p{
 }
 
 blockquote {
+    margin-left: 0.3rem;
+    padding-top: 0.1rem;
+    /* padding-bottom: 0.1 rem; */
+    padding-left: 0.9rem;
     border-left: 0.3rem solid #685c51;
-    padding-left: 0.8rem;
-    margin-left: 1.5rem;
-    color: var(--coffee);
+    color: var(--coffee-dark);
 }
 
 blockquote p{
@@ -60,6 +62,10 @@ blockquote p{
 
 em{
     font-style: italic;
+}
+
+strong{
+    font-weight: 600;
 }
 
 ol{
@@ -94,7 +100,7 @@ mjx-container[display="true"] {
     margin: 1.5rem auto 1rem auto !important;
     padding: 2rem 0px;
     /* !important to override mathjax typesetting */
-    
+    color: var(--dark-grey);
     max-width: 100%;    
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch; /* for smoother scrolling on touch devices */
@@ -109,12 +115,12 @@ mjx-container[display="true"]::before{
     position: absolute;
     height: 100%;
     width: 100%;
-    left: 0.4rem;
+    left: 0.7rem;
     bottom: 0.3rem;
     z-index: 1;
     opacity: 0.8;
 
-    box-shadow: -0.8rem 0.8rem var(--coffee-dark);
+    box-shadow: -0.7rem 0.8rem var(--coffee-dark);
 }
 
 mjx-container[display="true"] mjx-math {
@@ -144,6 +150,10 @@ img{
         justify-content: center;
     }
 
+    .wrapper-read{
+        width: 93%;
+    }
+
     mjx-container[display="true"] {
         font-size: 1.13rem !important;
         padding: 1rem;
@@ -152,6 +162,8 @@ img{
         box-sizing: border-box;
         -webkit-overflow-scrolling: touch; /* for smoother scrolling on touch devices */
         
+        left: 0.3em;
+
         background-color: var(--coffee-grey-2);
         box-shadow: -0.4em 0.4em var(--coffee-dark);
     }
@@ -161,13 +173,16 @@ img{
     }
 
     blockquote {
-        border-left: 0.215rem solid #685c51;
-        padding-left: 0.725rem;
-        margin-left: 1rem;
+        margin-left: 0.1em;
+        margin-bottom: 1rem;
+        padding-bottom: 0.1em;
+        padding-left: 0.85rem;
+        border-left: 0.25rem solid #685c51;
     }
 
     blockquote p{
         font-size: 1.025rem;
+        margin-bottom: 0.2rem;
     }
 
     /* img{

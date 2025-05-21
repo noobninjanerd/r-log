@@ -1,8 +1,13 @@
 /* about.css */
+.title{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
 
 .my-pic-container{
-    display: flex;
     justify-content: center;
+    display: flex;
     float: left;
     padding: 0px 10px;
 }
@@ -31,6 +36,10 @@ main p{
 
 /* Mobile Version */
 @media only screen and (max-width: 600px) {
+    .title{
+        width: 90%;
+    }
+    
     .pic-wrapper{
         display: flex;
         flex-wrap: wrap;
@@ -41,12 +50,15 @@ main p{
     }
 
     .my-pic{
+        margin-top: 0;
+        margin-bottom: 0;
         width: 225px;
         height: 225px;
     }
 
     .pic-wrapper article{
-        padding: 0 5px;
+        padding: 0 1.5em;
+        margin-top: 0.5rem;
         padding-top: 1rem;
     }
 }
