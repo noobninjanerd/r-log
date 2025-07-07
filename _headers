@@ -2,6 +2,9 @@
   Content-Type: application/xml
 
 /*
+  # only allow MY origin
+  access-control-allow-origin: https://r-log.pages.dev
+  
   # Block everything except what you explicitly allow:
   Content-Security-Policy: default-src 'self'; \
     script-src 'self' https://cdn.jsdelivr.net/npm/marked/marked.min.js https://cdn.jsdelivr.net/npm/mathjax@3; \
@@ -24,4 +27,4 @@
   Referrer-Policy: strict-origin-when-cross-origin
 
   # Disable unused powerful APIs
-  Permissions-Policy: geolocation=(), microphone=(), camera=(), vibration=(), midi=(), notifications=(), magnetometer=(), gyroscope=(), speaker=(), payment=()
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), vibrate=(), midi=(), notifications=(), magnetometer=(), gyroscope=(), speaker=(), payment=()
