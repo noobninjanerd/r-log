@@ -1,2 +1,27 @@
 /sitemap.xml
   Content-Type: application/xml
+
+/*
+  # Block everything except what you explicitly allow:
+  Content-Security-Policy: default-src 'self'; \
+    script-src 'self' https://cdn.jsdelivr.net/npm/marked/marked.min.js https://cdn.jsdelivr.net/npm/mathjax@3; \
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
+    font-src 'self' https://fonts.gstatic.com; \
+    img-src 'self' data:; \
+    connect-src 'self'; \
+    frame-ancestors 'none'
+
+  # Always HTTPS
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # Prevent click-jacking
+  X-Frame-Options: DENY
+
+  # Don’t sniff MIME
+  X-Content-Type-Options: nosniff
+
+  # Referrer policy
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Disable unused powerful APIs
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), vibration=(), midi=(), notifications=(), magnetometer=(), gyroscope=(), speaker=(), payment=()
