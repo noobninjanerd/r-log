@@ -6,13 +6,7 @@
   access-control-allow-origin: https://r-log.pages.dev
 
   # Block everything except what you explicitly allow:
-  Content-Security-Policy: default-src 'none';
-    script-src 'self' https://cdn.jsdelivr.net https://cdn.jsdelivr.net/npm/mathjax@3 https://static.cloudflareinsights.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data:;
-    connect-src 'self';
-    frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://cdn.jsdelivr.net https://cdn.jsdelivr.net/npm/mathjax@3 https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'
 
   # Always HTTPS
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
