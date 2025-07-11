@@ -4,10 +4,10 @@
 /*
   # only allow MY origin
   access-control-allow-origin: https://r-log.pages.dev
-  
+
   # Block everything except what you explicitly allow:
-  Content-Security-Policy: default-src 'self'; \
-    script-src 'self' https://cdn.jsdelivr.net/npm/marked/marked.min.js https://cdn.jsdelivr.net/npm/mathjax@3; \
+  Content-Security-Policy: default-src 'none'; \
+    script-src 'self' https://cdn.jsdelivr.net https://cdn.jsdelivr.net/npm/mathjax@3 https://static.cloudflareinsights.com; \
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
     font-src 'self' https://fonts.gstatic.com; \
     img-src 'self' data:; \
