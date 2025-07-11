@@ -2,4 +2,4 @@ User-agent: *
 Disallow: 
 Allow: /
 
-Sitemap: https://r-log.pages.dev/sitemap_index.xml
+Sitemap: https://r-log.pages.dev/sitemap.xml
