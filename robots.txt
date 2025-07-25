@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: 
+Disallow: /content/
 Allow: /
 
 Sitemap: https://r-log.pages.dev/sitemap.xml
