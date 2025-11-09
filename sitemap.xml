@@ -9,7 +9,7 @@
 
     <url>
         <loc>https://r-log.pages.dev/blog</loc>
-        <lastmod>2025-05-07T20:38:48+00:00</lastmod>
+        <lastmod>2025-11-09T19:00:48+00:00</lastmod>
     </url>
 
     <url>
@@ -30,6 +30,11 @@
     <url>
         <loc>https://r-log.pages.dev/posts/transphobia/01_Modelling_the_Real_World</loc>
         <lastmod>2025-05-16T21:04:04+00:00</lastmod>
+    </url>
+
+    <url>
+        <loc>https://r-log.pages.dev/posts/fw/00_C_Namespaces</loc>
+        <lastmod>2025-11-09T19:00:48+00:00</lastmod>
     </url>
 
 </urlset>
