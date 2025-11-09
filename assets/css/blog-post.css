@@ -69,13 +69,20 @@ strong{
 }
 
 ol{
+    list-style: decimnal;
+    padding-left: 1.8rem;
+    /* padding-right: 1rem; */
+    padding-bottom: 0.5rem;
+}
+
+.footnote ol{
     padding-left: 1.8em;
     padding-right: 2em;
     list-style: decimal;
     font-size: 0.85rem;
 }
 
-ol li p{
+.footnote ol li p{
     font-size: 0.95rem;
     margin-bottom: 0.5em;
 }

@@ -110,6 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+window.addEventListener('load', () => {
+  // fade‐out then remove the overlay
+  const loader = document.getElementById('loading');
+  loader.style.transition = 'opacity 0.5s ease';
+  loader.style.opacity = '0';
+  setTimeout(() => loader.remove(), 600);
+});
 
 // Functions that worked with marked.js -> switched to python for md-to-html conversion now tho
 

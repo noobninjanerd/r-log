@@ -48,6 +48,36 @@ a{
 	font-weight: 100;
 } 
 
+.wrapper-read a{
+	cursor: pointer;
+    font-size: inherit;
+	/* font-size: 14px;
+	line-height: 24px;
+	color: black; */
+	/* font-family: "Onest"; */
+	font-weight: 100;
+    text-decoration: underline;
+} 
+
+.references a{
+	cursor: pointer;
+	font-size: 16px;
+	line-height: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+	color: black;
+	font-weight: 200;
+    text-decoration: none;
+} 
+
+.wrapper-read a:hover{
+    color:blue;
+}
+
+.references a:hover{
+    text-decoration: underline;
+    color: black;
+}
+
 /* Mobile Version */
 @media only screen and (max-width: 600px){
     h1{
@@ -80,4 +110,36 @@ a{
     h4{
         font-size: 0.75rem;
     }
+}
+
+/* Wrapper for fenced code blocks */
+.highlight {
+  /* background: #faf8f6; */
+  border-radius: 0.5rem;
+  border: 1px solid var(--coffee-dark);
+  padding: 1rem 0.6rem;
+  overflow-x: auto;
+  font-family: ui-monospace, "SF Mono", "Roboto Mono", Menlo, Monaco, monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  /* color: #2b211a; */
+
+  margin-bottom: 0.7em;
+}
+
+/* Inline code */
+code {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 0.3rem;
+  padding: 0.15rem 0.35rem;
+  font-family: inherit;
+  font-size: 0.95em;
+  color: #c7254e;
+}
+
+/* Scroll on overflow */
+pre {
+  overflow-x: auto;
+  white-space: pre;
+  margin: 1.2rem 1.2rem;
 }

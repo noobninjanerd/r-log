@@ -1,0 +1,137 @@
+<div class="title-card">
+
+    <h1>C Namespaces</h1>
+
+    <div class="series">
+        <h4>E00, Firmware</h4>
+    </div>
+
+    <div class="meta-data">
+        <div>
+            <h4>Modified: October 16, 2025 11:47 AM</h4>
+        </div>
+        <div>
+            <h4> Posted: November 9, 2025 6:30 PM</h4>
+        </div>       
+    </div>
+    
+</div>
+
+<div class="wrapper-read">
+<p>Here’s a learning update.</p>
+<p>I was going through a project and repeatedly saw this come up,</p>
+<div class="highlight"><pre>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">STRUCT_NAME</span><span class="p">;</span>
+</pre></div>
+
+<p>Wherever there is a <code>struct</code>, I see the <code>typedef</code> next to it. I am yet to find a <code>struct</code> without a <code>typedef</code> in this proj.</p>
+<p>I understand what a <code>struct</code> is (I think). </p>
+<p>And I know what a <code>typedef</code> is (I think), and I have only ever personally used it in the context of function pointers.</p>
+<p>A cursory internet search led me to <a href="https://stackoverflow.com/questions/252780/why-should-we-typedef-a-struct-so-often-in-c" target="_blank" rel="noopener noreferrer">this</a> stack overflow answer, which led me to <a href="https://stackoverflow.com/questions/612328/difference-between-struct-and-typedef-struct-in-c" target="_blank" rel="noopener noreferrer">this</a> stack overflow answer. </p>
+<p>It seems that it reduces clutter in your code base. If you don’t use <code>typedef</code>, then each time you refer to that <code>struct</code>, you would have to use the <code>struct</code> keyword.</p>
+<div class="highlight">
+    <pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">};</span>
+
+<span class="c1">// declaring variables of type FOO called foo1 and foo2</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FOO</span><span class="w"> </span><span class="n">foo1</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FOO</span><span class="w"> </span><span class="n">foo2</span><span class="p">;</span>
+</pre></div>
+
+<p>You see that extra <code>struct</code> we need to declare a new variable. That is low-key redundant, sure.</p>
+<p>We could just do some <code>typedef</code> magic and get rid of that,</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">};</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO</span><span class="w"> </span><span class="n">FOO</span><span class="p">;</span>
+
+<span class="c1">// declaring variables of type FOO called foo1 and foo2</span>
+<span class="n">FOO</span><span class="w"> </span><span class="n">foo1</span><span class="p">;</span>
+<span class="n">FOO</span><span class="w"> </span><span class="n">foo2</span><span class="p">;</span>
+</pre></div>
+
+<p>But there’s more. The above is still not the same as what’s actually been done in the project,</p>
+<div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">STRUCT_NAME</span><span class="p">;</span>
+</pre></div>
+
+<h2>Namespaces</h2>
+<p>Apparently there’s more to namespaces than the <code>using namespace std</code> that most beginners add to their C++ programs and are advised against (rightfully so). <a href="https://www.spinellis.gr/cscout/doc/name.html">Namespaces</a> are popularly thought of as more of a C++ thing, than a C thing. But then I stumbled across <a href="https://medium.com/@tahseen.adit/understanding-namespaces-typedef-and-forward-declarations-in-c-structures-25594e327b54" target="_blank" rel="noopener noreferrer">this</a> nicely done medium post and yet another stack overflow answer on <a href="https://stackoverflow.com/questions/3793952/understanding-c-namespaces" target="_blank" rel="noopener noreferrer">namespace in C</a>. It is a little bit more nuanced than the idea of local and global variables.</p>
+<p>We have the following four namespaces in C:</p>
+<ol>
+<li><strong>Label Names</strong> (the <code>goto</code> type)</li>
+<li><strong>Tags</strong>, for names of structures, unions and enumerations</li>
+<li>Members of structures and unions (a separate namespace is assigned to each struct/union)</li>
+<li><strong>Ordinary</strong> identifiers (termed <em>Objects</em> in the C standard, e.g.: names of functions, objects, variables, type(def) names, enumeration constants, etc.)</li>
+</ol>
+<p>So what exactly is happening under the hood with the <code>typedef</code>?</p>
+<h2>Without <code>typedef</code></h2>
+<p>When we just define a <code>struct FOO { / *** / }</code> the identifier <code>FOO</code> exists in the <strong>Tag</strong> namespace. So to refer to the <code>FOO</code> that exists in the Tag namespace, we have to use the keyword <code>struct</code> with it.</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">};</span>
+
+<span class="c1">// declaring variables of type FOO called foo1 and foo2</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FOO</span><span class="w"> </span><span class="n">foo1</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">FOO</span><span class="w"> </span><span class="n">foo2</span><span class="p">;</span>
+</pre></div>
+
+<p>Note that <code>foo1</code> and <code>foo2</code> exist in the <strong>Ordinary</strong> namespace.</p>
+<h2>With <code>typedef</code></h2>
+<div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO_t</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">};</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO_t</span><span class="w"> </span><span class="n">FOO_o</span><span class="p">;</span>
+
+<span class="c1">// declaring variables of type FOO_o called foo1 and foo2</span>
+<span class="n">FOO_o</span><span class="w"> </span><span class="n">foo1</span><span class="p">;</span>
+<span class="n">FOO_o</span><span class="w"> </span><span class="n">foo2</span><span class="p">;</span>
+</pre></div>
+
+<p><em>Typedef</em> identifiers are assigned to the <strong>Ordinary</strong> namespace. So, we create an identifier in the <strong>Ordinary</strong> namespace, with the same name as the identifier in the <strong>Tag</strong> namespace. And it acts like an <strong>alias</strong> for the actual <code>struct</code> identifier. Since, it exists in the <strong>Ordinary</strong> namespace, we don’t need to use the <code>struct</code> keyword with it.</p>
+<h2>Anonymous struct with <code>typedef</code></h2>
+<p>We skip naming the <code>struct</code>. It means, that there is no identifier associated with that struct in the <strong>Tag</strong> namespace. Only one identifier exists, and that too in the <strong>Ordinary</strong> namespace.</p>
+<div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">FOO_o</span><span class="p">;</span>
+
+<span class="c1">// refer to it using it&#39;s Ordinary namespace identifier</span>
+<span class="n">FOO_o</span><span class="w"> </span><span class="n">foo1</span><span class="p">;</span>
+<span class="n">FOO_o</span><span class="w"> </span><span class="n">foo2</span><span class="p">;</span>
+</pre></div>
+
+<p>Something to keep in mind with the anonymous <code>struct</code> is that you can’t forward declare it. You have to define it at declaration.</p>
+<h2>About Forward Declaration</h2>
+<p>Let’s check out these examples of forward declaration of a <em>structure</em>:</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO_t</span><span class="p">;</span><span class="w"> </span><span class="c1">// forward declaration</span>
+<span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO_t</span><span class="w"> </span><span class="n">FOO_o</span><span class="p">;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">FOO_t</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+
+<p>Notice that you cannot use the <strong>alias</strong> name in the <strong>Ordinary</strong> namespace for structure definition. We are essentially wrapping <code>struct FOO_t</code> in a new identifier <code>FOO_t</code>, something like a <em>macro</em>.</p>
+<h3>Opaque Types</h3>
+<p>We could just not declare the <code>struct</code>  at all, and leave it incomplete in a <code>typedef</code>. </p>
+<div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO_t</span><span class="w"> </span><span class="n">FOO_o</span><span class="p">;</span>
+
+<span class="c1">// cannot instantiate objects of type FOO_t as it&#39;s incomplete</span>
+<span class="c1">// pointers to FOO_o can still be assigned, e.g.: FOO_o *p; </span>
+<span class="c1">// but I am not sure why one would do that</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">FOO_t</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">};</span>
+
+<span class="c1">// can instantiate objects of type FOO_t now</span>
+</pre></div>
+
+<p>This is often done to hide source code. A header file could just expose the <code>typedef</code> of the <code>struct</code> and the actual definition would be in the <code>.c</code> file.</p>
+<p>But if that’s not what you want, the simplest thing to do would be to declare, define and <code>typedef</code> simultaneously,</p>
+<div class="highlight"><pre><span></span><span class="n">typdef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">FOO_t</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="cm">/* struct definition */</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="n">FOO_o</span><span class="p">;</span>
+
+<span class="c1">// declaring variables of type FOO_t called foo1 and foo2</span>
+<span class="n">FOO_o</span><span class="w"> </span><span class="n">foo1</span><span class="p">;</span>
+<span class="n">FOO_o</span><span class="w"> </span><span class="n">foo2</span><span class="p">;</span>
+</pre></div>
+
+<p>Yep, that’s it. Have a good day!</p>
+<h2>References &amp; Further Reading</h2>
+    <ul class="references">
+        <li><a href="https://stackoverflow.com/questions/252780/why-should-we-typedef-a-struct-so-often-in-c" target="_blank" rel="noopener noreferrer">Stack Overflow: Why should we typedef a struct so often in C?</a></li>
+        <li><a href="https://stackoverflow.com/questions/612328/difference-between-struct-and-typedef-struct-in-c" target="_blank" rel="noopener noreferrer">Stack Overflow: Difference between 'struct' and 'typedef struct' in C++?</a></li>
+        <li><a href="https://medium.com/@tahseen.adit/understanding-namespaces-typedef-and-forward-declarations-in-c-structures-25594e327b54" target="_blank" rel="noopener noreferrer">Md Tahseen Anam: Understanding Namespaces, typedef, and Forward Declarations in C Structures</a></li>
+        <li><a href="https://www.spinellis.gr/cscout/doc/name.html" target="_blank" rel="noopener noreferrer">Diomidis Spinellis: C Namespaces</a></li>
+        <li><a href="https://stackoverflow.com/questions/3793952/understanding-c-namespaces" target="_blank" rel="noopener noreferrer">Stack Overflow: understanding C namespaces</a></li>
+        <li><a href="https://stackoverflow.com/questions/9999512/forward-declaration-of-a-struct-in-c" target="_blank" rel="noopener noreferrer">Stack Overflow: forward declaration of a struct in C?</a></li>
+        <li><a href="https://websites.umich.edu/~eecs381/handouts/IncompleteDeclarations.pdf" target="_blank" rel="noopener noreferrer">Univ. of Michigan: Using Incomplete (Forward) Declarations</a></li>
+        <li><a href="https://sqlpey.com/c/struct-vs-typedef/" target="_blank" rel="noopener noreferrer">sqlpey: C/C++ Struct vs Typedef: Clarity on Definitions and Aliases</a></li>
+    </ul>
+</div>
